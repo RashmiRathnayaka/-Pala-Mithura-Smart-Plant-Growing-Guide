@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "පැළ මිතුරා",
+    "slug": "pala-mithura",
+    "scheme": "palamithura",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "lk.palamithura.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "ශාකයේ ඡායාරූප ගැනීමට කැමරාව භාවිත කරයි. (Used to take photos of your plants.)",
+        "NSPhotoLibraryUsageDescription": "ශාකයේ ඡායාරූප තෝරා ගැනීමට භාවිත කරයි. (Used to choose photos of your plants.)"
+      }
+    },
+    "android": {
+      "package": "lk.palamithura.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#1E6B43",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#1E6B43"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "ශාකයේ ඡායාරූප තෝරා ගැනීමට භාවිත කරයි.",
+          "cameraPermission": "ශාකයේ ඡායාරූප ගැනීමට කැමරාව භාවිත කරයි."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#1E6B43"
+        }
+      ],
+      "expo-font"
+    ]
+  }
+}

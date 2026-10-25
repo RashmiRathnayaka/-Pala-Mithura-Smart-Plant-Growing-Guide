@@ -1,0 +1,42 @@
+module.exports = [
+  {
+    slug: 'vegetables',
+    name: { si: 'එළවළු', en: 'Vegetables' },
+    description: { si: 'ගෙවත්තේ සහ කෙතේ වගා කළ හැකි එළවළු', en: 'Vegetables for home gardens and fields' },
+    icon: 'nutrition',
+    color: '#2E7D32',
+    order: 1,
+  },
+  {
+    slug: 'fruits',
+    name: { si: 'පලතුරු', en: 'Fruits' },
+    description: { si: 'පලතුරු ගස් සහ පැළ', en: 'Fruit trees and plants' },
+    icon: 'leaf',
+    color: '#F9A825',
+    order: 2,
+  },
+  {
+    slug: 'herbs',
+    name: { si: 'පලා සහ කුළුබඩු', en: 'Herbs & Spices' },
+    description: { si: 'පලා වර්ග සහ කුළුබඩු පැළ', en: 'Leafy herbs and spice plants' },
+    icon: 'flower',
+    color: '#558B2F',
+    order: 3,
+  },
+  {
+    slug: 'flowers',
+    name: { si: 'මල් පැළ', en: 'Flowers' },
+    description: { si: 'අලංකාර මල් වගාව', en: 'Ornamental flowering plants' },
+    icon: 'rose',
+    color: '#C2185B',
+    order: 4,
+  },
+  {
+    slug: 'medicinal',
+    name: { si: 'ඖෂධීය ශාක', en: 'Medicinal Plants' },
+    description: { si: 'දේශීය ඖෂධීය ශාක', en: 'Traditional medicinal plants' },
+    icon: 'medkit',
+    color: '#00897B',
+    order: 5,
+  },
+];
