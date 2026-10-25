@@ -1,6 +1,29 @@
+# Dependencies
 node_modules/
+
+# Environment variables and secrets
 .env
-.DS_Store
+.env.*
+!.env.example
+
+# Logs
 *.log
+npm-debug.log*
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# VS Code
 .vscode/*
 !.vscode/extensions.json
+
+# Expo
+.expo/
+
+# Build outputs
+dist/
+build/
+
+# Coverage reports
+coverage/
