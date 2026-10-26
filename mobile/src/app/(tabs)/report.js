@@ -5,7 +5,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { api, buildForm } from '../../lib/api';
 import { errorMessage, useI18n } from '../../lib/i18n';
 import { useApi } from '../../lib/useApi';
-import { Banner, Button, Card, Chip, Field, Loading, Screen, Select, Txt } from '../../components/ui';
+import { Banner, Button, Card, Chip, ErrorView, Field, Loading, Screen, Select, Txt } from '../../components/ui';
 import { PhotoPicker } from '../../components/photos';
 import { useMeta } from '../../components/forms';
 import { colors, space } from '../../theme';
@@ -85,6 +85,7 @@ export default function Report() {
   };
 
   if (garden.loading || allPlants.loading) return <Loading />;
+  if (allPlants.error) return <ErrorView error={allPlants.error} onRetry={allPlants.reload} />;
 
   return (
     <Screen>
@@ -125,6 +126,7 @@ export default function Report() {
             setUserPlantId(null);
           }}
           options={plantOptions}
+          emptyText={t('noPlantsYet')}
           style={{ marginBottom: 0 }}
         />
       </Card>

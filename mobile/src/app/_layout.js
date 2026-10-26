@@ -12,6 +12,7 @@ import {
 } from '@expo-google-fonts/noto-sans-sinhala';
 import { I18nProvider, useI18n } from '../lib/i18n';
 import { AuthProvider } from '../lib/auth';
+import { AppearanceProvider, useAppearance } from '../lib/appearance';
 import { colors, fonts } from '../theme';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -49,6 +50,11 @@ function RootStack() {
   );
 }
 
+function ThemedStatusBar() {
+  const { scheme } = useAppearance();
+  return <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />;
+}
+
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     NotoSansSinhala_400Regular,
@@ -67,8 +73,10 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <I18nProvider>
         <AuthProvider>
-          <StatusBar style="dark" />
-          <RootStack />
+          <AppearanceProvider>
+            <ThemedStatusBar />
+            <RootStack />
+          </AppearanceProvider>
         </AuthProvider>
       </I18nProvider>
     </SafeAreaProvider>

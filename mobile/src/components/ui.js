@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ActivityIndicator, FlatList, Modal, Pressable, RefreshControl, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, fonts, radius, shadow, space, type } from '../theme';
+import { colors, fonts, radius, shadow, space, type, themed, themedValue } from '../theme';
 import { errorMessage, useI18n } from '../lib/i18n';
 
 export function Txt({ variant = 'body', weight = 'regular', color = colors.ink, style, children, ...rest }) {
@@ -34,7 +34,7 @@ export function Screen({ children, scroll = true, refreshing, onRefresh, padded 
 }
 
 export function Button({ title, onPress, variant = 'primary', icon, loading, disabled, style, compact }) {
-  const v = buttonVariants[variant];
+  const v = buttonVariants()[variant];
   const off = disabled || loading;
   return (
     <Pressable
@@ -64,14 +64,14 @@ export function Button({ title, onPress, variant = 'primary', icon, loading, dis
   );
 }
 
-const buttonVariants = {
-  primary: { bg: colors.primary, fg: colors.white, border: colors.primary },
+const buttonVariants = themedValue(() => ({
+  primary: { bg: colors.primary, fg: colors.onPrimary, border: colors.primary },
   secondary: { bg: colors.surface, fg: colors.primary, border: colors.primary },
-  soil: { bg: colors.soil, fg: colors.white, border: colors.soil },
+  soil: { bg: colors.soil, fg: colors.onSoil, border: colors.soil },
   ghost: { bg: 'transparent', fg: colors.primary, border: 'transparent' },
   danger: { bg: colors.surface, fg: colors.danger, border: colors.danger },
-  dangerSolid: { bg: colors.danger, fg: colors.white, border: colors.danger },
-};
+  dangerSolid: { bg: colors.danger, fg: colors.onDanger, border: colors.danger },
+}));
 
 export function Card({ children, style, onPress, padded = true }) {
   const content = <View style={[styles.card, padded && { padding: space.lg }, style]}>{children}</View>;
@@ -179,16 +179,16 @@ export function InfoRow({ icon, label, value, children, last }) {
   );
 }
 
-const toneMap = {
+const toneMap = themedValue(() => ({
   info: { bg: colors.infoSoft, fg: colors.info, icon: 'information-circle' },
   warn: { bg: colors.pendingSoft, fg: colors.pending, icon: 'alert-circle' },
   danger: { bg: colors.dangerSoft, fg: colors.danger, icon: 'close-circle' },
   success: { bg: colors.verifiedSoft, fg: colors.verified, icon: 'checkmark-circle' },
   soil: { bg: colors.soilSoft, fg: colors.soil, icon: 'leaf' },
-};
+}));
 
 export function Banner({ tone = 'info', title, text, icon, style, children }) {
-  const m = toneMap[tone];
+  const m = toneMap()[tone];
   return (
     <View style={[styles.banner, { backgroundColor: m.bg }, style]} accessibilityRole="summary">
       <Ionicons name={icon || m.icon} size={22} color={m.fg} style={{ marginTop: 2 }} />
@@ -243,7 +243,7 @@ export function Empty({ icon = 'leaf-outline', text, actionTitle, onAction }) {
 }
 
 /** Simple, large-target picker in a bottom sheet. options: [{ value, label, sublabel }] */
-export function Select({ label, value, options, onChange, placeholder, style }) {
+export function Select({ label, value, options, onChange, placeholder, style, emptyText }) {
   const [open, setOpen] = useState(false);
   const selected = options.find((o) => o.value === value);
   return (
@@ -269,6 +269,11 @@ export function Select({ label, value, options, onChange, placeholder, style }) 
           <FlatList
             data={options}
             keyExtractor={(o) => String(o.value)}
+            ListEmptyComponent={
+              <Txt color={colors.inkSoft} style={{ paddingVertical: space.lg }}>
+                {emptyText || '—'}
+              </Txt>
+            }
             renderItem={({ item }) => (
               <Pressable
                 accessibilityRole="button"
@@ -316,8 +321,10 @@ export function Toggle({ label, value, onChange, hint }) {
 
 export function Stat({ value, label, tone = 'primary', icon, onPress }) {
   const fg = { primary: colors.primary, warn: colors.pending, danger: colors.danger, soil: colors.soil }[tone];
-  return (
-    <Card style={{ flexGrow: 1, flexBasis: '45%', minWidth: 140 }} onPress={onPress}>
+  // The sizing must sit on the outermost element (the Pressable when tappable) so the grid stays even.
+  const layout = { flexGrow: 1, flexBasis: '45%', minWidth: 140 };
+  const body = (
+    <Card style={{ flexGrow: 1 }}>
       {icon ? <Ionicons name={icon} size={22} color={fg} /> : null}
       <Txt variant="heading" weight="bold" color={fg}>
         {value ?? '–'}
@@ -326,6 +333,12 @@ export function Stat({ value, label, tone = 'primary', icon, onPress }) {
         {label}
       </Txt>
     </Card>
+  );
+  if (!onPress) return <View style={layout}>{body}</View>;
+  return (
+    <Pressable accessibilityRole="button" onPress={onPress} style={({ pressed }) => [layout, pressed && { opacity: 0.9 }]}>
+      {body}
+    </Pressable>
   );
 }
 
@@ -343,7 +356,7 @@ export function Bullets({ items, icon = 'ellipse', color = colors.primary }) {
   );
 }
 
-export const styles = StyleSheet.create({
+export const styles = themed(() => ({
   screen: { flex: 1, backgroundColor: colors.bg },
   button: {
     minHeight: 52,
@@ -400,7 +413,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  sheetBackdrop: { flex: 1, backgroundColor: 'rgba(19,74,46,0.35)' },
+  sheetBackdrop: { flex: 1, backgroundColor: colors.backdrop },
   sheet: {
     maxHeight: '75%',
     backgroundColor: colors.surface,
@@ -420,4 +433,4 @@ export const styles = StyleSheet.create({
   toggleRow: { flexDirection: 'row', alignItems: 'center', minHeight: 56, gap: space.md },
   toggleTrack: { width: 48, height: 28, borderRadius: 14, backgroundColor: colors.line, padding: 4 },
   toggleThumb: { width: 20, height: 20, borderRadius: 10, backgroundColor: colors.white },
-});
+}));

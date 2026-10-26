@@ -9,7 +9,8 @@
     "dev": "nodemon src/server.js",
     "seed": "node src/seed/seed.js",
     "seed:reset": "node src/seed/seed.js --reset",
-    "test": "node --test --test-concurrency=1 \"tests/**/*.test.js\""
+    "test": "node --test --test-concurrency=1 \"tests/**/*.test.js\"",
+    "check:db": "node scripts/check-db.js"
   },
   "engines": {
     "node": ">=20"

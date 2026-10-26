@@ -16,4 +16,9 @@ async function disconnectDB() {
   await mongoose.disconnect();
 }
 
-module.exports = { connectDB, disconnectDB };
+/** Hides the password in a connection string before it is logged. */
+function redactUri(uri = '') {
+  return String(uri).replace(/\/\/([^:/@]+):([^@]+)@/, '//$1:****@');
+}
+
+module.exports = { connectDB, disconnectDB, redactUri };

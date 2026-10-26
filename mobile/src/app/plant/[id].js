@@ -1,6 +1,6 @@
 /** Screen 6 – Plant details & growing guide */
 import { useLayoutEffect, useState } from 'react';
-import { Linking, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Linking, Pressable, ScrollView, View } from 'react-native';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { api } from '../../lib/api';
@@ -10,7 +10,7 @@ import { useApi } from '../../lib/useApi';
 import { kgPerHaToGPerSqm } from '../../lib/format';
 import { Banner, Bullets, Button, Card, ErrorView, InfoRow, Loading, Txt } from '../../components/ui';
 import { PlantImage, VerificationBadge } from '../../components/plant';
-import { colors, radius, space } from '../../theme';
+import { colors, radius, space, themed } from '../../theme';
 
 const has = (v) => v !== null && v !== undefined && v !== '';
 
@@ -45,7 +45,7 @@ function GrowthPath({ stages, t }) {
           <View key={s.stage} style={{ flexDirection: 'row', gap: space.md }}>
             <View style={{ alignItems: 'center', width: 28 }}>
               <View style={[styles.node, last && { backgroundColor: colors.soil }]}>
-                <Ionicons name={last ? 'basket' : 'leaf'} size={14} color={colors.white} />
+                <Ionicons name={last ? 'basket' : 'leaf'} size={14} color={colors.onPrimary} />
               </View>
               {!last ? <View style={styles.stem} /> : null}
             </View>
@@ -425,7 +425,7 @@ function DiseaseCard({ d }) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   fav: {
     width: 48,
     height: 48,
@@ -445,4 +445,4 @@ const styles = StyleSheet.create({
   fertRow: { borderLeftWidth: 3, borderLeftColor: colors.soil, paddingLeft: space.md, gap: 2 },
   node: { width: 28, height: 28, borderRadius: 14, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center' },
   stem: { flex: 1, width: 3, backgroundColor: colors.primarySoft, marginVertical: 2 },
-});
+}));

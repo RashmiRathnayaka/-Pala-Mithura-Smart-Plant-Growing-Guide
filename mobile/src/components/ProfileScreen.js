@@ -10,6 +10,7 @@ import { API_URL } from '../lib/config';
 import { Banner, Button, Card, Field, InfoRow, Screen, Select, Txt } from './ui';
 import { DistrictSelect } from './forms';
 import { LanguageSwitch } from './LanguageSwitch';
+import { ThemeSwitch } from './ThemeSwitch';
 import { colors, space } from '../theme';
 
 export default function ProfileScreen() {
@@ -82,6 +83,10 @@ export default function ProfileScreen() {
           </Txt>
           <LanguageSwitch />
         </View>
+        <Txt weight="bold" style={{ marginTop: space.lg, marginBottom: space.sm }}>
+          {t('appearance')}
+        </Txt>
+        <ThemeSwitch />
       </Card>
 
       {user.role === 'user' ? (

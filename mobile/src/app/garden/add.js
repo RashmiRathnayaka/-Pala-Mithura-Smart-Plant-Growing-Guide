@@ -7,7 +7,7 @@ import { errorMessage, useI18n } from '../../lib/i18n';
 import { useApi } from '../../lib/useApi';
 import { isoDate, parseIsoDate } from '../../lib/format';
 import { syncReminders } from '../../lib/reminders';
-import { Banner, Button, Field, Loading, Screen, Select } from '../../components/ui';
+import { Banner, Button, ErrorView, Field, Loading, Screen, Select } from '../../components/ui';
 import { DistrictSelect, StageSelect } from '../../components/forms';
 import { space } from '../../theme';
 
@@ -56,9 +56,11 @@ export default function AddPlant() {
   };
 
   if (plants.loading) return <Loading />;
+  if (plants.error) return <ErrorView error={plants.error} onRetry={plants.reload} />;
   return (
     <Screen>
-      <Select label={t('choosePlant')} placeholder={t('choosePlant')} value={form.plant} onChange={set('plant')} options={options} />
+      {!options.length ? <Banner tone="warn" text={t('noPlantsYet')} style={{ marginBottom: space.lg }} /> : null}
+      <Select label={t('choosePlant')} placeholder={t('choosePlant')} value={form.plant} onChange={set('plant')} options={options} emptyText={t('noPlantsYet')} />
       <Field label={`${t('nickname')} ${t('optional')}`} value={form.nickname} onChangeText={set('nickname')} maxLength={60} />
       <Field
         label={t('plantingDate')}

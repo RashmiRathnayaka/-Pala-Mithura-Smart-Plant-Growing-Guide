@@ -15,22 +15,22 @@ import { pickImages } from '../../components/photos';
 import { StageSelect } from '../../components/forms';
 import { Banner, Button, Card, ErrorView, Field, Loading, Screen, SectionTitle, Toggle, Txt } from '../../components/ui';
 import { PlantImage } from '../../components/plant';
-import { colors, radius, space } from '../../theme';
+import { colors, radius, space, themed, themedValue } from '../../theme';
 
 const EVENT_ICON = { planted: 'flag', watering: 'water', fertilizer: 'flask', photo: 'image', note: 'create', problem: 'alert-circle' };
-const EVENT_COLOR = {
+const EVENT_COLOR = themedValue(() => ({
   planted: colors.primary,
   watering: colors.info,
   fertilizer: colors.soil,
   photo: colors.primary,
   note: colors.inkSoft,
   problem: colors.danger,
-};
+}));
 
 function Sheet({ visible, title, onClose, children }) {
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
-      <Pressable style={{ flex: 1, backgroundColor: 'rgba(19,74,46,0.35)' }} onPress={onClose} />
+      <Pressable style={{ flex: 1, backgroundColor: colors.backdrop }} onPress={onClose} />
       <View style={styles.sheet}>
         <Txt variant="title" weight="bold" style={{ marginBottom: space.md }}>
           {title}
@@ -234,8 +234,8 @@ export default function GardenPlant() {
       {(tl.data?.events || []).map((e, i) => (
         <View key={`${e.type}-${e.id || i}`} style={{ flexDirection: 'row', gap: space.md }}>
           <View style={{ alignItems: 'center', width: 32 }}>
-            <View style={[styles.evIcon, { backgroundColor: EVENT_COLOR[e.type] }]}>
-              <Ionicons name={EVENT_ICON[e.type]} size={16} color={colors.white} />
+            <View style={[styles.evIcon, { backgroundColor: EVENT_COLOR()[e.type] }]}>
+              <Ionicons name={EVENT_ICON[e.type]} size={16} color={colors.onPrimary} />
             </View>
             {i < tl.data.events.length - 1 ? <View style={styles.evLine} /> : null}
           </View>
@@ -313,7 +313,7 @@ function RemindersSheet({ visible, reminders = {}, schedule, onClose, onSave, bu
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   task: { flex: 1, minWidth: 100, gap: 2, borderWidth: 1.5, borderColor: 'transparent', padding: space.md },
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm, marginTop: space.lg },
   fertRow: { flexDirection: 'row', gap: space.md, paddingVertical: space.sm, alignItems: 'center' },
@@ -324,4 +324,4 @@ const styles = StyleSheet.create({
   evLine: { flex: 1, width: 2, backgroundColor: colors.line, marginVertical: 2 },
   evPhoto: { width: 160, height: 120, borderRadius: radius.md, marginTop: space.sm, backgroundColor: colors.primarySoft },
   sheet: { backgroundColor: colors.surface, borderTopLeftRadius: radius.xl, borderTopRightRadius: radius.xl, padding: space.lg, paddingBottom: space.xxl },
-});
+}));

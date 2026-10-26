@@ -1,13 +1,13 @@
 /** Screen 5 – Plant search results (by Sinhala, English or scientific name; category filter). */
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { FlatList, ScrollView, TextInput, View } from 'react-native';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useI18n } from '../lib/i18n';
 import { useApi } from '../lib/useApi';
 import { Chip, Empty, ErrorView, Loading, Txt } from '../components/ui';
 import { PlantRow } from '../components/plant';
-import { colors, fonts, radius, space } from '../theme';
+import { colors, fonts, radius, space, themed } from '../theme';
 
 export default function Search() {
   const params = useLocalSearchParams();
@@ -75,7 +75,7 @@ export default function Search() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   searchBox: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -88,4 +88,4 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
   },
   input: { flex: 1, fontFamily: fonts.regular, fontSize: 16, color: colors.ink, paddingVertical: space.md, outlineStyle: 'none' },
-});
+}));

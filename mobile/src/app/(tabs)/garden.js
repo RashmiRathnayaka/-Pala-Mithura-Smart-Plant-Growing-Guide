@@ -1,6 +1,6 @@
 /** Screen 7 – My Plants: what the user is growing, with each crop's next tasks. */
 import { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { notify } from '../../lib/confirm';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,7 +11,7 @@ import { relativeDay } from '../../lib/format';
 import { syncReminders } from '../../lib/reminders';
 import { Button, Card, Empty, ErrorView, Loading, Screen, Txt } from '../../components/ui';
 import { PlantImage } from '../../components/plant';
-import { colors, radius, space } from '../../theme';
+import { colors, radius, space, themed } from '../../theme';
 
 function Task({ icon, label, when, overdue, tone = colors.primary }) {
   return (
@@ -122,7 +122,7 @@ export default function Garden() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   task: { flexDirection: 'row', alignItems: 'center', gap: space.sm },
   stage: {
     flexDirection: 'row',
@@ -134,4 +134,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderRadius: radius.pill,
   },
-});
+}));

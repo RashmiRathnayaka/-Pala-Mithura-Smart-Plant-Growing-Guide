@@ -13,13 +13,13 @@ import { PlantImage, VerificationBadge } from '../../../components/plant';
 import { AiNotice, RecommendationContent, StaffStatusBadge } from '../../../components/recommendation';
 import { ReportSummary } from '../../../components/ReportSummary';
 import { RecommendationEditor, contentToDraft, draftToContent } from '../../../components/RecommendationEditor';
-import { colors, radius, space } from '../../../theme';
+import { colors, radius, space, themed, themedValue } from '../../../theme';
 
-const DECISIONS = [
+const DECISIONS = themedValue(() => ([
   { key: 'accepted', icon: 'checkmark-circle', color: colors.verified, label: 'accept', help: 'acceptHelp' },
   { key: 'modified', icon: 'create', color: colors.soil, label: 'modify', help: 'modifyHelp' },
   { key: 'rejected', icon: 'close-circle', color: colors.danger, label: 'reject', help: 'rejectHelp' },
-];
+]));
 
 export default function Review() {
   const { id } = useLocalSearchParams();
@@ -184,7 +184,7 @@ export default function Review() {
         <>
           <SectionTitle title={t('review')} />
           <View style={{ gap: space.sm }}>
-            {DECISIONS.map((d) => {
+            {DECISIONS().map((d) => {
               const disabled = d.key === 'accepted' && !rec.aiOutput;
               const active = decision === d.key;
               return (
@@ -294,7 +294,7 @@ export default function Review() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   decision: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -306,4 +306,4 @@ const styles = StyleSheet.create({
   },
   audit: { flexDirection: 'row', gap: space.md, paddingVertical: space.sm },
   line: { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.line },
-});
+}));

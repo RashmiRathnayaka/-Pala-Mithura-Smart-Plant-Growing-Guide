@@ -1,7 +1,7 @@
 /** Recommendation display: status badges, the AI notice, and the content sections. */
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, radius, space } from '../theme';
+import { colors, radius, space, themed } from '../theme';
 import { useI18n } from '../lib/i18n';
 import { Banner, Bullets, Card, Txt } from './ui';
 
@@ -147,7 +147,7 @@ export function RecommendationContent({ content }) {
             {content.suggestedActions.map((a, i) => (
               <View key={i} style={{ flexDirection: 'row', gap: space.md }}>
                 <View style={styles.stepNum}>
-                  <Txt variant="caption" weight="bold" color={colors.white}>
+                  <Txt variant="caption" weight="bold" color={colors.onPrimary}>
                     {i + 1}
                   </Txt>
                 </View>
@@ -197,8 +197,8 @@ export function RecommendationContent({ content }) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   badge: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 10, paddingVertical: 3, borderRadius: radius.pill, alignSelf: 'flex-start' },
   cause: { borderLeftWidth: 3, borderLeftColor: colors.primarySoft, paddingLeft: space.md, gap: 2 },
   stepNum: { width: 26, height: 26, borderRadius: 13, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
-});
+}));

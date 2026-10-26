@@ -1,13 +1,13 @@
 /** Screen 2a – Login */
 import { useState } from 'react';
-import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, Pressable, View } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { homeForRole, useAuth } from '../lib/auth';
 import { errorMessage, useI18n } from '../lib/i18n';
 import { Banner, Button, Field, Screen, Txt } from '../components/ui';
 import { LanguageSwitch } from '../components/LanguageSwitch';
-import { colors, radius, space } from '../theme';
+import { colors, radius, space, themed } from '../theme';
 
 export default function Login() {
   const { login } = useAuth();
@@ -39,7 +39,7 @@ export default function Login() {
         </View>
         <View style={styles.brand}>
           <View style={styles.mark}>
-            <Ionicons name="leaf" size={40} color={colors.white} />
+            <Ionicons name="leaf" size={40} color={colors.onPrimary} />
           </View>
           <Txt variant="heading" weight="bold" color={colors.primary}>
             {t('appName')}
@@ -84,8 +84,8 @@ export default function Login() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   brand: { alignItems: 'center', marginVertical: space.xl, gap: space.sm },
   mark: { width: 76, height: 76, borderRadius: radius.xl, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center' },
   link: { alignItems: 'center', paddingVertical: space.xl },
-});
+}));

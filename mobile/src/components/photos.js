@@ -1,10 +1,10 @@
 /** Photo picker (camera or gallery) with thumbnails and removal. */
-import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, Pressable, ScrollView, View } from 'react-native';
 import { notify } from '../lib/confirm';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, radius, space } from '../theme';
+import { colors, radius, space, themed } from '../theme';
 import { useI18n } from '../lib/i18n';
 import { Button, Txt } from './ui';
 
@@ -66,7 +66,7 @@ export function PhotoPicker({ photos, onChange, max = 6 }) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   thumb: { width: 96, height: 96, borderRadius: radius.md, backgroundColor: colors.primarySoft },
   remove: {
     position: 'absolute',
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+}));

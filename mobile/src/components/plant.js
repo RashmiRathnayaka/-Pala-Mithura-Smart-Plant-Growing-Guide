@@ -1,9 +1,9 @@
 /** Plant-specific components: image with designed fallback, cards, verification badge. */
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { colors, radius, shadow, space } from '../theme';
+import { colors, radius, shadow, space, themed } from '../theme';
 import { imageUrl } from '../lib/config';
 import { useI18n } from '../lib/i18n';
 import { Txt } from './ui';
@@ -108,7 +108,7 @@ export function PlantRow({ plant, right, onPress }) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   badge: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, paddingVertical: 2, borderRadius: radius.pill, alignSelf: 'flex-start' },
   tile: { backgroundColor: colors.surface, borderRadius: radius.lg, padding: space.sm, ...shadow },
   row: {
@@ -121,4 +121,4 @@ const styles = StyleSheet.create({
     marginBottom: space.md,
     ...shadow,
   },
-});
+}));

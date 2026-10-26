@@ -1,6 +1,6 @@
 /** Screen 3 – Home dashboard: search, categories, suggested, popular, recent, favourites. */
 import { useState } from 'react';
-import { Pressable, RefreshControl, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { Pressable, RefreshControl, ScrollView, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -9,7 +9,7 @@ import { useI18n } from '../../lib/i18n';
 import { useApi } from '../../lib/useApi';
 import { ErrorView, Loading, SectionTitle, Txt } from '../../components/ui';
 import { PlantTile } from '../../components/plant';
-import { colors, fonts, radius, shadow, space } from '../../theme';
+import { colors, fonts, radius, shadow, space, themed } from '../../theme';
 
 function Carousel({ items }) {
   if (!items?.length) return null;
@@ -73,7 +73,7 @@ export default function Home() {
             <Ionicons name="notifications-outline" size={24} color={colors.primary} />
             {notes.data?.unread ? (
               <View style={styles.dot}>
-                <Txt variant="caption" weight="bold" color={colors.white} style={{ fontSize: 11, lineHeight: 16 }}>
+                <Txt variant="caption" weight="bold" color={colors.onDanger} style={{ fontSize: 11, lineHeight: 16 }}>
                   {notes.data.unread > 9 ? '9+' : notes.data.unread}
                 </Txt>
               </View>
@@ -100,12 +100,14 @@ export default function Home() {
             <Ionicons name="camera" size={26} color={colors.soil} />
           </View>
           <View style={{ flex: 1 }}>
-            <Txt variant="bodyLg" weight="bold" color={colors.white}>
+            <Txt variant="bodyLg" weight="bold" color={colors.onPrimary}>
               {t('reportCta')}
             </Txt>
-            <Txt color="rgba(255,255,255,0.88)">{t('reportCtaSub')}</Txt>
+            <Txt color={colors.onPrimary} style={{ opacity: 0.88 }}>
+              {t('reportCtaSub')}
+            </Txt>
           </View>
-          <Ionicons name="chevron-forward" size={22} color={colors.white} />
+          <Ionicons name="chevron-forward" size={22} color={colors.onPrimary} />
         </Pressable>
 
         <SectionTitle title={t('categories')} action={t('seeAll')} onAction={() => router.push('/categories')} />
@@ -156,7 +158,7 @@ export default function Home() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = themed(() => ({
   top: { flexDirection: 'row', alignItems: 'center', marginBottom: space.lg },
   bell: { width: 48, height: 48, borderRadius: 24, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', ...shadow },
   dot: {
@@ -196,4 +198,4 @@ const styles = StyleSheet.create({
   catGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
   cat: { width: '23%', minWidth: 72, alignItems: 'center', gap: 6 },
   catIcon: { width: 56, height: 56, borderRadius: radius.lg, alignItems: 'center', justifyContent: 'center' },
-});
+}));

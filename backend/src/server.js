@@ -1,5 +1,5 @@
 const env = require('./config/env');
-const { connectDB, disconnectDB } = require('./config/db');
+const { connectDB, disconnectDB, redactUri } = require('./config/db');
 const createApp = require('./app');
 const ai = require('./services/ai/aiService');
 const storage = require('./services/storageService');
@@ -8,8 +8,11 @@ async function start() {
   try {
     await connectDB();
   } catch (err) {
-    console.error(`[db] Could not connect to MongoDB at ${env.mongoUri}`);
+    console.error(`[db] Could not connect to MongoDB at ${redactUri(env.mongoUri)}`);
     console.error('     Is MongoDB running? Check MONGO_URI in backend/.env');
+    if (/mongodb\+srv:/.test(env.mongoUri)) {
+      console.error('     Atlas: add your IP under Security → Network Access in the Atlas dashboard.');
+    }
     console.error(`     ${err.message}`);
     process.exit(1);
   }
