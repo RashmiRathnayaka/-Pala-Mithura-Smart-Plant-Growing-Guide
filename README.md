@@ -2,6 +2,34 @@
 
 A Sinhala-first mobile app that helps Sri Lankan growers learn how to grow plants, track their own garden, and get AI-assisted help with plant problems. Every AI recommendation is reviewed by an Agricultural Instructor before it is treated as approved advice.
 
+
+## 📱 Application Screenshots
+
+### Loading Screen
+![Loading Screen](screenshots/LoadingPage.png)
+
+### Login Page
+![Login Page Screen](screenshots/LoginPage.png)
+
+### Home Screen
+![Pala Mithura Home Screen](screenshots/HomePage.png)
+
+### Plant Analysis
+![Plant Analysis Screen](screenshots/Analysing.png)
+
+### Plant Growing Guide
+![Plant Guide Screen](screenshots/PlantPage.png)
+
+### Profile
+![Profile Screen](screenshots/ProfilePage.png)
+
+### Instructor Dashboard
+![Instructor Dashboard Screen](screenshots/InstructorDashboard.png)
+
+### Admin Dashboard
+![Admin Dashboard Screen](screenshots/AdminDashboard.png)
+
+
 | Part | Technology |
 |---|---|
 | Mobile app (`mobile/`) | React Native, Expo SDK 58, Expo Router, Noto Sans Sinhala |
