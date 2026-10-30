@@ -9,7 +9,7 @@ A Sinhala-first mobile app that helps Sri Lankan growers learn how to grow plant
 ![Loading Screen](screenshots./LoadingPage.jpeg)
 
 ### Login Page
-![Login Page Screen](screenshots./LoginPage.jpeg)
+![Login Page Screen](Screenshots./LoginPage.jpeg)
 
 ### Home Screen
 ![Pala Mithura Home Screen](screenshots./HomePage.jpeg)
