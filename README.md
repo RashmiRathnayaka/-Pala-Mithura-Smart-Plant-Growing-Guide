@@ -17,6 +17,9 @@ A Sinhala-first mobile app that helps Sri Lankan growers learn how to grow plant
 ### Plant Analysis
 ![Plant Analysis Screen](Screenshots./Analysing.jpeg)
 
+### AI Recommendation
+![Plant Analysis Screen](Screenshots./AI_Answer.jpeg)
+
 ### Plant Growing Guide
 ![Plant Guide Screen](Screenshots./PlantPage.jpeg)
 
