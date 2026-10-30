@@ -6,28 +6,28 @@ A Sinhala-first mobile app that helps Sri Lankan growers learn how to grow plant
 ## 📱 Application Screenshots
 
 ### Loading Screen
-![Loading Screen](screenshots/LoadingPage.jpeg)
+![Loading Screen](screenshots./LoadingPage.jpeg)
 
 ### Login Page
-![Login Page Screen](screenshots/LoginPage.jpeg)
+![Login Page Screen](screenshots./LoginPage.jpeg)
 
 ### Home Screen
-![Pala Mithura Home Screen](screenshots/HomePage.jpeg)
+![Pala Mithura Home Screen](screenshots./HomePage.jpeg)
 
 ### Plant Analysis
-![Plant Analysis Screen](screenshots/Analysing.jpeg)
+![Plant Analysis Screen](screenshots./Analysing.jpeg)
 
 ### Plant Growing Guide
-![Plant Guide Screen](screenshots/PlantPage.jpeg)
+![Plant Guide Screen](screenshots./PlantPage.jpeg)
 
 ### Profile
-![Profile Screen](screenshots/ProfilePage.jpeg)
+![Profile Screen](screenshots./ProfilePage.jpeg)
 
 ### Instructor Dashboard
-![Instructor Dashboard Screen](screenshots/InstructorDashboard.jpeg)
+![Instructor Dashboard Screen](screenshots./InstructorDashboard.jpeg)
 
 ### Admin Dashboard
-![Admin Dashboard Screen](screenshots/AdminDashboard.jpeg)
+![Admin Dashboard Screen](screenshots./AdminDashboard.jpeg)
 
 
 | Part | Technology |
