@@ -7,7 +7,7 @@ https://github.com/user-attachments/assets/bd3cbfc0-12a3-4f5d-a9b3-1dc7a5366341
 ## 📱 Application Screenshots
 
 ### Loading Screen
-![Loading Screen](Screenshots./LoadingPage.jpeg)
+<img src="Screenshots/LoadingPage.jpeg" alt="Loading Screen" width="300">
 
 ### Login Page
 ![Login Page Screen](Screenshots./LoginPage.jpeg)
