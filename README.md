@@ -14,28 +14,28 @@ https://github.com/user-attachments/assets/bd3cbfc0-12a3-4f5d-a9b3-1dc7a5366341
 </p>
 
 <p align="center">
-  <img src="./Screenshots/HomePage.jpeg" alt="Home Screen" width="200">
+  <img src="./Screenshots./HomePage.jpeg" alt="Home Screen" width="200">
   <br><b>Home Screen</b>
-  <img src="./Screenshots/Analysing.jpeg" alt="Plant Analysis" width="200">
+  <img src="./Screenshots./Analysing.jpeg" alt="Plant Analysis" width="200">
   <br><b>Plant Analysis</b>
 </p>
 
 <p align="center">
-  <img src="./Screenshots/AI_Answer.jpeg" alt="AI Recommendation" width="200">
+  <img src="./Screenshots./AI_Answer.jpeg" alt="AI Recommendation" width="200">
   <br><b>AI Recommendation</b>
-  <img src="./Screenshots/PlantPage.jpeg" alt="Plant Growing Guide" width="200">
+  <img src="./Screenshots./PlantPage.jpeg" alt="Plant Growing Guide" width="200">
   <br><b>Plant Growing Guide</b>
 </p>
 
 <p align="center">
-  <img src="./Screenshots/ProfilePage.jpeg" alt="Profile Screen" width="200">
+  <img src="./Screenshots./ProfilePage.jpeg" alt="Profile Screen" width="200">
   <br><b>Profile</b>
-  <img src="./Screenshots/InstructorDashboard.jpeg" alt="Instructor Dashboard" width="200">
+  <img src="./Screenshots./InstructorDashboard.jpeg" alt="Instructor Dashboard" width="200">
   <br><b>Instructor Dashboard</b>
 </p>
 
 <p align="center">
-  <img src="./Screenshots/AdminDashboard.jpeg" alt="Admin Dashboard" width="200">
+  <img src="./Screenshots./AdminDashboard.jpeg" alt="Admin Dashboard" width="200">
   <br><b>Admin Dashboard</b>
 </p>
 
