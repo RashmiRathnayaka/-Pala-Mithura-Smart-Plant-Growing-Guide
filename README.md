@@ -173,41 +173,32 @@ Uploads are checked by file signature (JPEG/PNG/WebP only, not just the extensio
 
 ---
 
-## 6. The recommendation workflow
 
-```
-Farmer Submits Report
-          │
-          ▼
-      AI Analysis
-          │
-     ┌────┴─────┐
-     ▼          ▼
- AI Success   AI Fails
-     │          │
-     ▼          ▼
-ai_generated  pending_review
-     │        (No Draft)
-     ▼          │
-pending_review  │
-     │          │
-     └────┬─────┘
-          ▼
-     Instructor Review
-          │
-    ┌─────┼─────┐
-    ▼     ▼     ▼
-  Accept Modify Reject
-    │     │     │
-    ▼     ▼     ▼
-accepted modified rejected
-    │     │     │
-    └─────┼─────┘
-          ▼
-       Published
-          │
-          ▼
-    Farmer Notified
+### 🔄 AI Recommendation Workflow
+
+```mermaid
+flowchart TD
+    A["Farmer Submits Report"] --> B["AI Analysis"]
+
+    B --> C{"AI Analysis Successful?"}
+
+    C -->|Yes| D["ai_generated"]
+    C -->|No| E["pending_review<br/>(No AI Draft)"]
+
+    D --> F["pending_review"]
+    E --> G["Instructor Review"]
+    F --> G
+
+    G --> H{"Instructor Decision"}
+
+    H -->|Accept| I["accepted"]
+    H -->|Modify| J["modified"]
+    H -->|Reject| K["rejected"]
+
+    I --> L["published"]
+    J --> L
+
+    L --> M["Farmer Notified"]
 ```
 
 - **Accept:** approves the AI draft unchanged, with an optional comment.
