@@ -59,6 +59,40 @@ https://github.com/user-attachments/assets/bd3cbfc0-12a3-4f5d-a9b3-1dc7a5366341
   </tr>
 </table>
 
+### 🔄 AI Recommendation Workflow
+
+```mermaid
+flowchart TD
+    A["Farmer Submits Report"] --> B["AI Analysis"]
+
+    B --> C{"AI Analysis Successful?"}
+
+    C -->|Yes| D["ai_generated"]
+    C -->|No| E["pending_review<br/>(No AI Draft)"]
+
+    D --> F["pending_review"]
+    E --> G["Instructor Review"]
+    F --> G
+
+    G --> H{"Instructor Decision"}
+
+    H -->|Accept| I["accepted"]
+    H -->|Modify| J["modified"]
+    H -->|Reject| K["rejected"]
+
+    I --> L["published"]
+    J --> L
+
+    L --> M["Farmer Notified"]
+```
+
+- **Accept:** approves the AI draft unchanged, with an optional comment.
+- **Modify:** the instructor edits causes, actions, fertilizer advice and so on, and must explain the changes.
+- **Reject:** a reason is required. The instructor can add safe alternative advice or ask the farmer for more information.
+- **Review state is hidden until published.** Until then the farmer only sees the AI draft, marked "preliminary". After a rejection the AI text is hidden from the farmer.
+- **Only instructors can decide,** and each item can be decided only once (atomic update, so two instructors can't both decide).
+- **Every step is written to an append-only audit log:** the original AI version, the instructor's changes, the decision, reviewer and timestamps. The audit history is shown on the review screen.
+
 ## ✨ Key Features
 
 - Sinhala and English language support.
@@ -170,43 +204,6 @@ Safety rules are enforced on the server, whichever provider is used:
 - `STORAGE_PROVIDER=cloudinary` uploads to Cloudinary. Set `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` and `CLOUDINARY_API_SECRET` from your Cloudinary dashboard.
 
 Uploads are checked by file signature (JPEG/PNG/WebP only, not just the extension), limited to `MAX_IMAGE_SIZE_MB` (5 MB) each, with at most 6 per request.
-
----
-
-
-### 🔄 AI Recommendation Workflow
-
-```mermaid
-flowchart TD
-    A["Farmer Submits Report"] --> B["AI Analysis"]
-
-    B --> C{"AI Analysis Successful?"}
-
-    C -->|Yes| D["ai_generated"]
-    C -->|No| E["pending_review<br/>(No AI Draft)"]
-
-    D --> F["pending_review"]
-    E --> G["Instructor Review"]
-    F --> G
-
-    G --> H{"Instructor Decision"}
-
-    H -->|Accept| I["accepted"]
-    H -->|Modify| J["modified"]
-    H -->|Reject| K["rejected"]
-
-    I --> L["published"]
-    J --> L
-
-    L --> M["Farmer Notified"]
-```
-
-- **Accept:** approves the AI draft unchanged, with an optional comment.
-- **Modify:** the instructor edits causes, actions, fertilizer advice and so on, and must explain the changes.
-- **Reject:** a reason is required. The instructor can add safe alternative advice or ask the farmer for more information.
-- **Review state is hidden until published.** Until then the farmer only sees the AI draft, marked "preliminary". After a rejection the AI text is hidden from the farmer.
-- **Only instructors can decide,** and each item can be decided only once (atomic update, so two instructors can't both decide).
-- **Every step is written to an append-only audit log:** the original AI version, the instructor's changes, the decision, reviewer and timestamps. The audit history is shown on the review screen.
 
 ---
 
