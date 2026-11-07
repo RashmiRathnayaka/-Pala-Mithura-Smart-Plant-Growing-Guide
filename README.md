@@ -58,33 +58,6 @@ https://github.com/user-attachments/assets/bd3cbfc0-12a3-4f5d-a9b3-1dc7a5366341
     </td>
   </tr>
 </table>
-### Loading Screen
-<img src="Screenshots./LoadingPage.jpeg" alt="Loading Screen" width="200">
-
-### Login Page
-<img src="Screenshots./LoginPage.jpeg" alt="Login Screen" width="200">
-
-### Home Screen
-<img src="Screenshots./HomePage.jpeg" alt="Home Screen" width="200">
-
-### Plant Analysis
-<img src="Screenshots./Analysing.jpeg" alt="Analysing Screen" width="200">
-
-### AI Recommendation
-<img src="Screenshots./AI_Answer.jpeg" alt="AI_Answer Screen" width="200">
-
-### Plant Growing Guide
-<img src="Screenshots./PlantPage.jpeg" alt="Plant Screen" width="200">
-
-### Profile
-<img src="Screenshots./ProfilePage.jpeg" alt="Profile Screen" width="200">
-
-### Instructor Dashboard
-<img src="Screenshots./InstructorDashboard.jpeg" alt="Instructor Dashboard Screen" width="200">
-
-### Admin Dashboard
-<img src="Screenshots./AdminDashboard.jpeg" alt="Admin Dashboard Screen" width="200">
-
 
 | Part | Technology |
 |---|---|
