@@ -59,6 +59,17 @@ https://github.com/user-attachments/assets/bd3cbfc0-12a3-4f5d-a9b3-1dc7a5366341
   </tr>
 </table>
 
+## ✨ Key Features
+
+- Sinhala and English language support.
+- Plant growing guides for Sri Lankan crops.
+- AI-assisted plant disease analysis.
+- Image-based plant problem reporting.
+- Personalized garden management.
+- Watering and fertilizer reminders.
+- Agricultural Instructor recommendation review.
+- Admin dashboard for plant and disease management.
+
 | Part | Technology |
 |---|---|
 | Mobile app (`mobile/`) | React Native, Expo SDK 58, Expo Router, Noto Sans Sinhala |
