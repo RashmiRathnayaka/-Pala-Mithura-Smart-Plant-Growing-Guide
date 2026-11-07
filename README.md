@@ -2,6 +2,7 @@
 
 A Sinhala-first mobile app that helps Sri Lankan growers learn how to grow plants, track their own garden, and get AI-assisted help with plant problems. Every AI recommendation is reviewed by an Agricultural Instructor before it is treated as approved advice.
 
+https://github.com/user-attachments/assets/bd3cbfc0-12a3-4f5d-a9b3-1dc7a5366341
 
 ## 📱 Application Screenshots
 
