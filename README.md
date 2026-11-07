@@ -6,6 +6,10 @@ https://github.com/user-attachments/assets/bd3cbfc0-12a3-4f5d-a9b3-1dc7a5366341
 
 ## 📱 Application Screenshots
 
+<p align="center">
+  <img src="./Screenshots./LoadingPage.jpeg" width="250">
+  <img src="./Screenshots./LoginPage.jpeg" width="250">
+</p>
 
 ### Loading Screen
 <img src="Screenshots./LoadingPage.jpeg" alt="Loading Screen" width="200">
