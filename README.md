@@ -141,10 +141,38 @@ Uploads are checked by file signature (JPEG/PNG/WebP only, not just the extensio
 ## 6. The recommendation workflow
 
 ```
-farmer submits report ─▶ AI analysis ─▶ ai_generated ─▶ pending_review ─▶ instructor:
-                                 │                                        ├─ Accept  ─▶ accepted ─┐
-                                 └─ AI fails ─▶ pending_review (no draft) ├─ Modify  ─▶ modified ─┼─▶ published ─▶ farmer notified
-                                                                          └─ Reject  ─▶ rejected ─┘
+Farmer Submits Report
+          │
+          ▼
+      AI Analysis
+          │
+     ┌────┴─────┐
+     ▼          ▼
+ AI Success   AI Fails
+     │          │
+     ▼          ▼
+ai_generated  pending_review
+     │        (No Draft)
+     ▼          │
+pending_review  │
+     │          │
+     └────┬─────┘
+          ▼
+     Instructor Review
+          │
+    ┌─────┼─────┐
+    ▼     ▼     ▼
+  Accept Modify Reject
+    │     │     │
+    ▼     ▼     ▼
+accepted modified rejected
+    │     │     │
+    └─────┼─────┘
+          ▼
+       Published
+          │
+          ▼
+    Farmer Notified
 ```
 
 - **Accept:** approves the AI draft unchanged, with an optional comment.
